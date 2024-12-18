@@ -12,7 +12,7 @@ function App() {
 
     if (!inputValue) return;
 
-    setName(e.target[0].value);
+    setName(inputValue);
   };
 
   if (!name) {
