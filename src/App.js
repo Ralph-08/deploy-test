@@ -1,22 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState(false);
+
+  const handleNameSubmit = (e) => {
+    e.preventDefault();
+
+    const inputValue = e.target[0].value;
+
+    if (!inputValue) return;
+
+    setName(e.target[0].value);
+  };
+
+  if (!name) {
+    return (
+      <section className="App App-header">
+        <h1>What's your name?</h1>
+        <form onSubmit={handleNameSubmit}>
+          <input />
+          <button>➡︎</button>
+        </form>
+      </section>
+    );
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Open <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Hello, {name}!</h1>
       </header>
     </div>
   );
